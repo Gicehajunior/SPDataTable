@@ -1,14 +1,14 @@
 {
    "name": "sp-datatables/sp-datatables",
-   "description": "A simple mpesa daraja api helper in PHP",
-   "keywords": ["mpesa", "mpesa-payment", "daraja-api"],
-   "homepage": "https://github.com/Gicehajunior/mpesapaypap/tree/main",
+   "description": "A simple jquery datatable editor library in PHP",
+   "keywords": ["jquery", "datatable", "editor", "php"],
+   "homepage": "https://github.com/Gicehajunior/SPDataTable.git",
    "license": "MIT",
    "authors": [
       {
          "name": "Giceha Junior",
          "email": "gicehajunior76@daphascomp.com",
-         "homepage": "https://simplepay.daphascomp.com"
+         "homepage": "https://github.com/Gicehajunior/SPDataTable.git"
       }
    ],
    "require": {
