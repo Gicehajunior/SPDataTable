@@ -1,0 +1,20 @@
+{
+   "name": "sp/sp-datatables",
+   "description": "A simple mpesa daraja api helper in PHP",
+   "keywords": ["mpesa", "mpesa-payment", "daraja-api"],
+   "homepage": "https://github.com/Gicehajunior/mpesapaypap/tree/main",
+   "license": "MIT",
+   "authors": [
+      {
+         "name": "Giceha Junior",
+         "email": "gicehajunior76@daphascomp.com",
+         "homepage": "https://simplepay.daphascomp.com"
+      }
+   ],
+   "require": {
+      "php": ">=5.3.0"
+   },
+   "autoload": {
+      "classmap": ["SP/DataTables/SPDataTable.php"]
+   }
+}
