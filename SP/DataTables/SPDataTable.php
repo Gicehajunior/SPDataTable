@@ -1,6 +1,6 @@
 <?php
 
-namespace SP\Datatables;
+namespace SP\DataTables;
 
 class SPDataTable {
     private $data = [];
