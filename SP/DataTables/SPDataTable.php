@@ -1,5 +1,7 @@
 <?php
 
+namespace SP\Datatables;
+
 class SPDataTable {
     private $data = [];
     private $columns = [];
