@@ -1,7 +1,5 @@
 <?php
 
-namespace SelfPhp\DataTables; 
-
 class SPDataTable {
     private $data = [];
     private $columns = [];
