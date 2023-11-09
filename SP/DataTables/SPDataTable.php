@@ -127,16 +127,38 @@ class SPDataTable {
     } 
 
     /**
+     * Retrieves the number of columns in the datatable.
+     * 
+     * @return int The count of columns.
+     */
+    public function columnCount() {
+        return count($this->columns);
+    }
+
+    /**
+     * Retrieves the number of rows in the datatable.
+     * 
+     * @return int The count of rows.
+     */
+    public function rowCount() {
+        return count($this->data);
+    }
+
+    /**
+     * Converts the datatable data to JSON format.
+     * 
+     * @return string JSON representation of the datatable data.
+     */
+    public function toJson() {
+        return json_encode($this->data);
+    }
+
+    /**
      * Generates the datatable parsed content.
      * 
      * @return array The datatable content.
      */
-    public function make() {
-        $output = [
-            'columns' => $this->columns,
-            'data' => $this->data,
-        ];
-
+    public function make() { 
         return $this->data;
     }
 
