@@ -3,36 +3,48 @@
 namespace SP\DataTables;
 
 /**
- * ------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  * 
- *                                  SPDataTable Class
+ *                   SPDataTable Class: Data Modification for jQuery Datatables
  * 
- *                  This class is used to edit and generate JQUERY 
- *                  datatable object. It is used to edit the data before 
- *                  sending it to the datatable.
+ * This class is dedicated to editing and crafting jQuery datatable objects,
+ * providing a means to adjust data before it is transmitted to the datatable.
  *                              
- * ------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  */
 class SPDataTable {
+    /**
+     * @var array Holds the data rows for the datatable.
+     */
     private $data = [];
+
+    /**
+     * @var array Holds the columns of the datatable.
+     */
     private $columns = [];
+
+    /**
+     * @var array Holds the original query result data.
+     */
     private $queryResult;
 
     /**
-     * Add row function is used to add a row to the datatable.
+     * Adds a row to the datatable.
      * 
-     * @param array $row
+     * @param array $row The data row to be added.
+     * @return SPDataTable Returns the instance for method chaining.
      */
     public function addRow($row) {
         $this->data[] = $row;
         return $this;
     }
-    
 
     /**
-     * Edit column function is used to edit a column in the datatable. 
+     * Edits a column in the datatable.
      * 
-     * @param string $columnName
+     * @param string $columnName The name of the column to be edited.
+     * @param callable $editCallback The callback function to edit the column content.
+     * @return SPDataTable Returns the instance for method chaining.
      */
     public function editColumn($columnName, $editCallback) {
         $columnIndex = array_search($columnName, $this->columns, true);
@@ -49,9 +61,9 @@ class SPDataTable {
     }
 
     /**
-     * Remove row function is used to remove a row from the datatable.
+     * Removes a row from the datatable.
      * 
-     * @param int $index
+     * @param int $index The index of the row to be removed.
      */
     public function removeRow($index) {
         if (isset($this->data[$index])) {
@@ -61,9 +73,10 @@ class SPDataTable {
     }
 
     /**
-     * Remove column function is used to remove a column from the datatable.
+     * Removes a column from the datatable.
      * 
-     * @param string $columnName
+     * @param string $columnName The name of the column to be removed.
+     * @return SPDataTable Returns the instance for method chaining.
      */
     public function removeColumn($columnName) {
         $columnIndexes = array_keys($this->columns, $columnName);
@@ -79,9 +92,9 @@ class SPDataTable {
     }
 
     /**
-     * Add column function is used to add a column to the datatable if it does not exists.
+     * Adds a column to the datatable if it does not exist.
      * 
-     * @param string $columnName
+     * @param string $columnName The name of the column to be added.
      */
     public function addColumnIfNotExists($columnName) {
         if (!in_array($columnName, $this->columns)) {
@@ -93,10 +106,11 @@ class SPDataTable {
     }
 
     /**
-     * Set custom content function is used to set a new custom column content.
+     * Sets new custom column content.
      * 
-     * @param string $columnName
-     * @param callable $contentCallback
+     * @param string $columnName The name of the column.
+     * @param callable $contentCallback The callback function to set custom column content.
+     * @return SPDataTable Returns the instance for method chaining.
      */
     public function setCustomContent($columnName, $contentCallback) {
         $this->addColumnIfNotExists($columnName);
@@ -113,9 +127,9 @@ class SPDataTable {
     } 
 
     /**
-     * Make function is used to generate the datatable parsed content.
+     * Generates the datatable parsed content.
      * 
-     * @return array
+     * @return array The datatable content.
      */
     public function make() {
         $output = [
@@ -127,10 +141,9 @@ class SPDataTable {
     }
 
     /**
-     * Generate columns function is used to generate the columns of the datatable 
-     * for mapping purposes.
+     * Generates the columns of the datatable for mapping purposes.
      * 
-     * @param array $result
+     * @param array $result The query result data.
      */
     public function generateColumns($result) {
         if (!empty($result)) {
@@ -145,11 +158,11 @@ class SPDataTable {
     } 
 
     /**
-     * Set table data function is used to set the data of the datatable.
+     * Sets the data of the datatable.
      * 
-     * @param array $queryResult
-     * @throws \Exception
-     * @return SPDataTable
+     * @param array $queryResult The query result data.
+     * @throws \Exception If data expected to be parsed is not found.
+     * @return SPDataTable Returns the instance for method chaining.
      */
     public function setTableData($queryResult) { 
         if (!empty($queryResult)) {
