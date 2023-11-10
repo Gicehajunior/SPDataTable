@@ -186,16 +186,17 @@ class SPDataTable {
      * @throws \Exception If data expected to be parsed is not found.
      * @return SPDataTable Returns the instance for method chaining.
      */
-    public function setTableData($queryResult) { 
-        if (!empty($queryResult)) {
-            $this->queryResult = $queryResult;
-            $this->generateColumns($this->queryResult);
+    public function setTableData($queryResult) {  
+        if (empty($queryResult)) {
+            $this->queryResult = [];
+            return $this;
+        }
 
-            foreach ($this->queryResult as $key => $row) {
-                $this->addRow($row);
-            }
-        } else {
-            throw new \Exception("Data expected to be parsed not found!");
+        $this->queryResult = $queryResult;
+        $this->generateColumns($this->queryResult);
+
+        foreach ($this->queryResult as $key => $row) {
+            $this->addRow($row);
         }
 
         return $this;
